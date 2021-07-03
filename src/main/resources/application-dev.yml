@@ -1,0 +1,15 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master-dev.yml
+    enabled: false
+    drop-first: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/social_media_demo?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  devtools:
+    restart:
+      enabled: true

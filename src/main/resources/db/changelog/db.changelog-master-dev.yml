@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - property:
+      name: now
+      value: NOW()
+      dbms: mysql
+
+  - include:
+      file: changes/table/v0.0/db.changelog-table.yml
+      relativeToChangelogFile: true
+#  - include:
+#      file: changes/seed/v0.0/db.changelog-seed.yml
+#      relativeToChangelogFile: true

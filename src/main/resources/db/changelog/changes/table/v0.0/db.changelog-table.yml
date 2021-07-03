@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: user.yml
+      relativeToChangelogFile: true
+#  - include:
+#      file: modules.yml
+#      relativeToChangelogFile: true

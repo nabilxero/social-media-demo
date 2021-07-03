@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: populate tables
+      author: nabil
+      changes:
+        - loadData:
+#            encoding: "UTF-8"
+            file: user.csv
+            relativeToChangelogFile: true
+            tableName: user
+            quotchar: '"'

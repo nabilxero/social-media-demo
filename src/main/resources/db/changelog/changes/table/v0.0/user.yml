@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create user table
+      author: nabil
+      validCheckSum: ANY
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(150)
+              - column:
+                  name: password
+                  type: varchar(150)
+        - addAutoIncrement:
+            columnDataType: BIGINT
+            columnName: id
+            incrementBy: 1
+            startWith: 200
+            tableName: user

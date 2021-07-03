@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create location table
+      author: nabil
+      changes:
+        - createTable:
+            tableName: location
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR (150)
+                  constraints:
+                    nullable: false

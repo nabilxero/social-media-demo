@@ -1,1 +1,39 @@
+server:
+  port: 3030
+
+spring:
+  application:
+    name: social-media-demo
+  profiles:
+    active: dev
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+#  liquibase:
+#    default-schema: social_media_demo
+#    change-log: classpath:/db/changelog/db.changelog-master-dev.yml
+#    drop-first: false
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/social_media_demo?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+#    username: root
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    open-in-view: true
+    generate-ddl: true
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
 
