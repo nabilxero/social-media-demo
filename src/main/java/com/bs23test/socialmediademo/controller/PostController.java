@@ -32,8 +32,19 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponseError(false,404,"Failure","Not found"));
         }
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true,200,"Success",post));
-
     }
+    @PutMapping("/post")
+    public ResponseEntity<?> updatePost(@RequestBody PostDto postDto, @CurrentUser UserPrincipal userPrincipal) {
+        if (postDto == null) {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponseError(false,400,"Failure","Invalid Request"));
+        }
+        PostDto post = postService.updatePost(postDto, userPrincipal);
+        if (post == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponseError(false,404,"Failure","Not found"));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true,200,"Success",post));
+    }
+
     @GetMapping("/post/all-private")
     public ResponseEntity<?> viewPrivatePosts(@CurrentUser UserPrincipal userPrincipal) {
         List<Post> posts = postService.getAllPostsByUserId(userPrincipal.getId());

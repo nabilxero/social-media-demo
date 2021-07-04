@@ -3,7 +3,6 @@ package com.bs23test.socialmediademo.service;
 import com.bs23test.socialmediademo.model.User;
 import com.bs23test.socialmediademo.repository.UserRepository;
 import com.bs23test.socialmediademo.security.UserPrincipal;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,17 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String usernameOrEmail)
+    public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        // Let people login with either username or email
-        User user = userRepository.findByUsername(usernameOrEmail)
+        User user = userRepository.findByUsername(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found with username or email : " + usernameOrEmail)
+                        new UsernameNotFoundException("User not found with username : " + username)
                 );
 
         return UserPrincipal.create(user);
