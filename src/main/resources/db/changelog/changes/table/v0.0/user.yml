@@ -24,6 +24,12 @@ databaseChangeLog:
               - column:
                   name: password
                   type: varchar(150)
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: company_id
+                  type: BIGINT
         - addAutoIncrement:
             columnDataType: BIGINT
             columnName: id

@@ -2,6 +2,9 @@ databaseChangeLog:
   - include:
       file: user.yml
       relativeToChangelogFile: true
-#  - include:
-#      file: modules.yml
-#      relativeToChangelogFile: true
+  - include:
+      file: location.yml
+      relativeToChangelogFile: true
+  - include:
+      file: post.yml
+      relativeToChangelogFile: true

@@ -22,6 +22,7 @@ public class PostController {
 
     private final PostService postService;
 
+    @CrossOrigin
     @PostMapping("/post")
     public ResponseEntity<?> createPost(@RequestBody PostRequest postRequest, @CurrentUser UserPrincipal userPrincipal) {
         if (postRequest == null) {
@@ -33,6 +34,8 @@ public class PostController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true,200,"Success",post));
     }
+
+    @CrossOrigin
     @PutMapping("/post")
     public ResponseEntity<?> updatePost(@RequestBody PostDto postDto, @CurrentUser UserPrincipal userPrincipal) {
         if (postDto == null) {
@@ -45,6 +48,7 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true,200,"Success",post));
     }
 
+    @CrossOrigin
     @GetMapping("/post/all-private")
     public ResponseEntity<?> viewPrivatePosts(@CurrentUser UserPrincipal userPrincipal) {
         List<Post> posts = postService.getAllPostsByUserId(userPrincipal.getId());
@@ -54,6 +58,7 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true,200,"Success",posts));
     }
 
+    @CrossOrigin
     @GetMapping("/post")
     public ResponseEntity<?> viewAllPosts() {
         List<Post> posts = postService.getPosts();

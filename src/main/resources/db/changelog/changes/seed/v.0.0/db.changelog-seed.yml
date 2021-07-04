@@ -9,3 +9,9 @@ databaseChangeLog:
             relativeToChangelogFile: true
             tableName: user
             quotchar: '"'
+
+        - loadData:
+            file: location.csv
+            relativeToChangelogFile: true
+            tableName: user
+            quotchar: '"'
